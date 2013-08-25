@@ -64,11 +64,9 @@ Diaspora::Application.routes.draw do
   resources :photos, :except => [:index] do
     put :make_profile_photo
   end
-
-  # ActivityStreams routes
-  scope "/activity_streams", :module => "activity_streams", :as => "activity_streams" do
-    resources :photos, :controller => "photos", :only => [:create]
-  end
+	
+	#Search
+	get 'search' => "search#search"
 
   resources :conversations do
     resources :messages, :only => [:create, :show]

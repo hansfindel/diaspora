@@ -1,8 +1,73 @@
+# Head
+
+**Attention:** This release includes a potentially long running migration! However it should be safe to run this while keeping your application servers on.
+
+## Refactor
+* Service and ServiceController, general code reorg to make it cleaner/+ testable/+ extensible [#4344](https://github.com/diaspora/diaspora/pull/4344)
+* Background actual mailing when sending invitations [#4069](https://github.com/diaspora/diaspora/issues/4069)
+* Set the current user on the client side through gon [#4028](https://github.com/diaspora/diaspora/issues/4028)
+* Update sign out route to a DELETE request [#4068](https://github.com/diaspora/diaspora/issues/4068)
+* Convert all ActivityStreams::Photo to StatusMessages and drop ActivityStreams::Photo [#4144](https://github.com/diaspora/diaspora/issues/4144)
+* Port the Rails application to strong_parameters in preparation to the upgrade to Rails 4 [#4143](https://github.com/diaspora/diaspora/issues/4143)
+* Refactor left bar side menu, improve tag autosuggestion design [#4271](https://github.com/diaspora/diaspora/issues/4271), [#4316](https://github.com/diaspora/diaspora/pull/4316)
+* Extract and factorize the header css in a new file, fix ugly header in registration [#4389](https://github.com/diaspora/diaspora/pull/4389)
+* Move contact list on profile to profile information, show user his own contacts on profile [#4360](https://github.com/diaspora/diaspora/pull/4360)
+* Refactor metas, HTML is now valid [#4356](https://github.com/diaspora/diaspora/pull/4356)
+* Improve sharing message and mention/message buttons on profile [#4374](https://github.com/diaspora/diaspora/pull/4374)
+
+## Bug fixes
+* Check twitter write access before adding/authorizing it for a user. [#4124](https://github.com/diaspora/diaspora/issues/4124)
+* Don't focus comment form on 'show n more comments' [#4265](https://github.com/diaspora/diaspora/issues/4265)
+* Do not render mobile photo view for none-existing photos [#4194](https://github.com/diaspora/diaspora/issues/4194)
+* Render markdown content for prettier email subjects and titles [#4182](https://github.com/diaspora/diaspora/issues/4182)
+* Disable invite button after sending invite [#4173](https://github.com/diaspora/diaspora/issues/4173)
+* Fix pagination for people list on the tag stream page [#4245](https://github.com/diaspora/diaspora/pull/4245)
+* Fix missing timeago tooltip in conversations [#4257](https://github.com/diaspora/diaspora/issues/4257)
+* Fix link to background image [#4289](https://github.com/diaspora/diaspora/pull/4289)
+* Fix Facebox icons 404s when called from Backbone
+* Fix deleting a post from Facebook [#4290](https://github.com/diaspora/diaspora/pull/4290)
+* Display notices a little bit longer to help on sign up errors [#4274](https://github.com/diaspora/diaspora/issues/4274)
+* Fix user contact sharing/receiving [#4163](https://github.com/diaspora/diaspora/issues/4163)
+* Change image to ajax-loader when closing lightbox [#3229](https://github.com/diaspora/diaspora/issues/3229)
+* Fix pointer cursor on the file upload button [#4349](https://github.com/diaspora/diaspora/pull/4349)
+* Resize preview button [#4355](https://github.com/diaspora/diaspora/pull/4355)
+* Fix compability problem with MySQL 5.6 [#4312](https://github.com/diaspora/diaspora/issues/4312)
+* Don't collapse the post preview [#4346](https://github.com/diaspora/diaspora/issues/4346)
+* Improve mobile usability [#4354](https://github.com/diaspora/diaspora/pull/4354)
+* Descending text is no longer cut off in orange welcome banner [#4377](https://github.com/diaspora/diaspora/issues/4377)
+* Adjust Facebook character limit to reality [#4380](https://github.com/diaspora/diaspora/issues/4380)
+* Restore truncated URLs when posting to Twitter [#4211](https://github.com/diaspora/diaspora/issues/4211)
+* Fix mobile search tags [#4392](https://github.com/diaspora/diaspora/issues/4392)
+* Remove placeholders for name fields in settings (no more Sofaer) [#4385](https://github.com/diaspora/diaspora/pull/4385)
+* Problems with layout the registration page for mobile. [#4396](https://github.com/diaspora/diaspora/issues/4396)
+* Do not display photos in the background in the SPV [#4407](https://github.com/diaspora/diaspora/pull/4407)
+* Fix mobile view of deleted reshares [#4397](https://github.com/diaspora/diaspora/issues/4397)
+* Fix the overlapping of embedded youtube videos [#2943](https://github.com/diaspora/diaspora/issues/2943)
+* Fix opacity of control icons [#4414](https://github.com/diaspora/diaspora/issues/4414/)
+* Add hover state to header icons [#4436](https://github.com/diaspora/diaspora/pull/4436)
+
+## Features
+* Admin: add option to find users under 13 (COPPA) [#4252](https://github.com/diaspora/diaspora/pull/4252)
+* Show the user if a contact is sharing with them when viewing their profile page [#2948](https://github.com/diaspora/diaspora/issues/2948)
+* Made Unicorn timeout configurable and increased the default to 90 seconds
+* Follow DiasporaHQ upon account creation is now configurable to another account [#4278](https://github.com/diaspora/diaspora/pull/4278)
+* Use first header as title in the single post view, when possible [#4256](https://github.com/diaspora/diaspora/pull/4256)
+* Close publisher when clicking on the page outside of it [#4282](https://github.com/diaspora/diaspora/pull/4282)
+* Deleting a post deletes it from Tumblr too [#4331](https://github.com/diaspora/diaspora/pull/4331)
+* OpenGraph support [#4215](https://github.com/diaspora/diaspora/pull/4215)
+* Added Wordpress service ability for posts. [#4321](https://github.com/diaspora/diaspora/pull/4321)
+* Implement tag search autocomplete in header search box [#4169](https://github.com/diaspora/diaspora/issues/4169)
+* Uncheck 'make contacts visible to each other' by default when adding new aspect. [#4343](https://github.com/diaspora/diaspora/issues/4343)
+* Add possibility to ask for Bitcoin donations [#4375](https://github.com/diaspora/diaspora/pull/4375)
+* Remove posts, comments and private conversations from the mobile site. [#4408](https://github.com/diaspora/diaspora/pull/4408) [#4409](https://github.com/diaspora/diaspora/pull/4409)
+* Added a link to user photos and thumbnails are shown in the left side bar [#4347](https://github.com/diaspora/diaspora/issues/4347)
+* Rework the single post view
+
 # 0.1.1.0
 
 ## Refactor
 
-* Refactored config/ directory [#4145](https://github.com/diaspora/diaspora/pull/4145).
+* Refactored config/ directory [#4144](https://github.com/diaspora/diaspora/pull/4145).
 * Drop misleading fallback donation form. [Proposal](https://www.loomio.org/discussions/1045?proposal=2722)
 * Update Typhoeus to 0.6.3 and refactor HydraWrapper. [#4162](https://github.com/diaspora/diaspora/pull/4162)
 * Bump recomended Ruby version to 1.9.3-p448, see [Ruby news](http://www.ruby-lang.org/en/news/2013/06/27/hostname-check-bypassing-vulnerability-in-openssl-client-cve-2013-4073/).
@@ -30,6 +95,7 @@
 * Leaving the `to` field blank when sending a private message causes a server error [#4227](https://github.com/diaspora/diaspora/issues/4227)
 * Fix hashtags that start a line when posting to Facebook or Twitter [#3768](https://github.com/diaspora/diaspora/issues/3768) [#4154](https://github.com/diaspora/diaspora/issues/4154)
 * Show avatar of recent user in conversation list [#4237](https://github.com/diaspora/diaspora/issues/4237)
+* Private message fails if contact not entered correctly [#4210](https://github.com/diaspora/diaspora/issues/4210)
 
 ## Features
 
