@@ -1,4 +1,4 @@
-#   Copyright (c) 2010-2012, Diaspora Inc.  This file is
+#   Copyright (c) 2010-2013, Diaspora Inc.  This file is
 #   licensed under the Affero General Public License version 3 or later.  See
 #   the COPYRIGHT file.
 
@@ -44,7 +44,6 @@ nl:
     admin_bar:
       pages: "Pagina's"
       pod_stats: "Pod Statistieken"
-      resque_overview: "Resque Overzicht"
       user_search: "Gebruiker Zoeken"
       weekly_user_stats: "Wekelijkse Gebruiker Statistieken"
     stats:
@@ -149,6 +148,8 @@ nl:
       donate: "Doneer"
       handle_explanation: "Dit is jouw Diaspora ID. Net als een e-mailadres kun je deze aan mensen geven zodat ze je kunnen bereiken."
       help:
+        any_problem: "Enige Problemen?"
+        contact_podmin: "Gelieve de systeembeheerder van uw pod te contacteren!"
         do_you: "Heb je:"
         email_feedback: "%{link} jouw feedback, als dat jou voorkeur heeft."
         email_link: "E-mail"
@@ -156,6 +157,7 @@ nl:
         find_a_bug: "... een %{link} gevonden?"
         have_a_question: "... een %{link}?"
         here_to_help: "De Diaspora community staat voor je klaar!"
+        mail_podmin: "E-mail van Podmin"
         need_help: "Hulp nodig?"
         tag_bug: "bug"
         tag_feature: "feature"
@@ -333,6 +335,7 @@ nl:
     create:
       already_contacts: "Je bent al verbonden met deze persoon"
       already_sent: "Je hebt deze persoon al uitgenodigd."
+      empty: "Gelieve minstens 1 email adres toe te voegen."
       no_more: "Je hebt geen uitnodigingen meer."
       own_address: "Het is niet mogelijk om een uitnodiging naar je eigen adres te sturen."
       rejected: "De volgende e-mailadressen gaven problemen: "
@@ -703,6 +706,7 @@ nl:
       hey_make: "HEEY,<br/>MAAK<br/>IETS"
       join_the_movement: "Sluit je aan!"
       password: "WACHTWOORD"
+      password_confirmation: "Wachtwoordbevestiging"
       sign_up: "AANMELDEN"
       sign_up_message: "Social Networking met een ♥"
       username: "GEBRUIKER"
@@ -974,6 +978,7 @@ nl:
       close_account_text: "Sluit Account"
       comment_on_post: "...iemand op jouw post reageert?"
       current_password: "Huidig wachtwoord"
+      current_password_expl: "die gene waar je mee inlogt..."
       download_photos: "download mijn foto's"
       download_xml: "download mijn xml"
       edit_account: "Bewerk account"
@@ -997,6 +1002,7 @@ nl:
     getting_started:
       awesome_take_me_to_diaspora: "Super! Neem me naar Diaspora*"
       community_welcome: "De Diaspora community is blij je aan boord te hebben!"
+      connect_to_facebook_link: "verbinden met je Facebook account"
       hashtag_explanation: "Hashtags laten je gemakkelijk jou interesses volgen. Bovendien kunnen ze je helpen bij het vinden van nieuwe contacten op Diaspora."
       hashtag_suggestions: "Probeer het volgen van tags zoals #art, #movies, #gif, etc. eens uit."
       saved: "Opgeslagen!"

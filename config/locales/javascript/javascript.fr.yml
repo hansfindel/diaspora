@@ -1,4 +1,4 @@
-#   Copyright (c) 2010-2012, Diaspora Inc.  This file is
+#   Copyright (c) 2010-2013, Diaspora Inc.  This file is
 #   licensed under the Affero General Public License version 3 or later.  See
 #   the COPYRIGHT file.
 
@@ -6,10 +6,12 @@
 
 fr:
   javascripts:
+    and: "et"
     aspect_dropdown:
       add_to_aspect: "Ajouter le contact"
       all_aspects: "Tous les aspects"
       error: "Impossible de partager avec <%= name %>. Ignorez-vous cette personne ?"
+      error_remove: "Ne peut pas supprimer <%= name %> de l'aspect :("
       select_aspects: "Choisir les aspects"
       started_sharing_with: "Vous avez commencé à partager avec <%= name %> !"
       stopped_sharing_with: "Vous avez arrêté de partager avec <%= name %>."
@@ -21,14 +23,17 @@ fr:
         two: "Dans <%= count %> aspects"
         zero: "Sélectionnez les aspects"
     aspect_navigation:
+      add_an_aspect: "+ Ajouter un aspect"
       deselect_all: "Désélectionner tout"
       no_aspects: "Aucun aspect sélectionné"
       select_all: "Sélectionner tout"
+    comma: ","
     comments:
-      hide: "Cacher les commentaires"
+      hide: "Masquer les commentaires"
       show: "Afficher tous les commentaires"
-    confirm_dialog: "Êtes-vous sûr ?"
+    confirm_dialog: "Êtes-vous certain-e ?"
     delete: "Effacer"
+    edit: "Éditer"
     failed_to_like: "Impossible d'aimer !"
     failed_to_post_message: "Impossible de partager le message !"
     getting_started:
@@ -54,15 +59,22 @@ fr:
     ignore_user: "Ignorer cet utilisateur ?"
     infinite_scroll:
       no_more: "Pas d'autres messages."
+      no_more_contacts: "Pas d'autres contacts."
     my_activity: "Mon activité"
+    my_aspects: "Mes Aspects"
     my_stream: "Flux"
     people:
       not_found: "Et personne n'a été trouvé ..."
     photo_uploader:
+      completed: "<%= file %> complété"
+      empty: "{file} est vide, s'il vous plaît sélectionner des fichiers à nouveau sans celui-ci."
+      invalid_ext: "{file} a une extension invalide. Seules {extensions} sont permises."
       looking_good: "Impressionnant, vous avez un super look !"
+      size_error: "{file} est trop gros, la taille maximum est {sizeLimit}."
     publisher:
       at_least_one_aspect: "Vous devez créer au moins un aspect"
       limited: "Limité - votre message ne sera vu que par des gens avec qui vous partagez"
+      near_from: "À proximité de : <%= location %>"
       public: "Public - votre message sera visible de tous et trouvé par les moteurs de recherche"
     reshares:
       duplicate: "C'est si bien que ça ? Vous avez déjà repartagé ce message !"
@@ -73,6 +85,11 @@ fr:
     stream:
       comment: "Commenter"
       follow: "Suivre"
+      followed_tag:
+        add_a_tag: "Ajouter un tag"
+        contacts_title: "Personnes qui suivent ces tags"
+        follow: "Suivre"
+        title: "#tags suivis"
       hide: "Masquer"
       hide_nsfw_posts: "Masquer les messages #nsfw"
       like: "J'aime"
@@ -100,6 +117,10 @@ fr:
         zero: "<%= count %> repartages"
       show_nsfw_post: "Montrer le message"
       show_nsfw_posts: "Tout montrer"
+      tags:
+        follow: "Suivre #<%= tag %>"
+        following: "Suivant #<%= tag %>"
+        stop_following: "Arrêter de suivre #<%= tag %>"
       unfollow: "Ne pas suivre"
       unlike: "Je n'aime plus"
     tags:

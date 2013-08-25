@@ -1,4 +1,4 @@
-#   Copyright (c) 2010-2012, Diaspora Inc.  This file is
+#   Copyright (c) 2010-2013, Diaspora Inc.  This file is
 #   licensed under the Affero General Public License version 3 or later.  See
 #   the COPYRIGHT file.
 
@@ -45,7 +45,6 @@ eo:
       correlations: "Korelacio"
       pages: "Paĝoj"
       pod_stats: "Statistiko de 'pod' (Diaspora-servilo)"
-      resque_overview: "Superrigardo pri saveblecoj"
       user_search: "Serĉo de uzanto"
       weekly_user_stats: "Semajna statistiko de uzanto"
     correlations:
@@ -281,12 +280,9 @@ eo:
       success: "Konversacio sukcese forviŝiĝis."
     helper:
       new_messages:
-        few: "%{count} novaj mesaĝoj"
-        many: "%{count} novaj mesaĝoj"
         one: "1 nova mesaĝo"
         other: "%{count} novaj mesaĝoj"
-        two: "%{count} novaj poŝtoj"
-        zero: "neniuj novaj mesaĝoj"
+        zero: "Neniuj novaj mesaĝoj"
     index:
       create_a_new_message: "krei novan mesaĝon"
       inbox: "Poŝtujo"
@@ -332,7 +328,7 @@ eo:
       no_more: "Vi ne plu havas invitojn."
       own_address: "Vi ne povas sendi inviton al via propra adreso."
       rejected: "La postaj retpoŝtadresoj estis problemaj:"
-      sent: "Invitoj sendiĝis al:"
+      sent: "Invitoj sendiĝis al: %{emails}"
     edit:
       accept_your_invitation: "Akcepti vian inviton"
       your_account_awaits: "Via konto atendas!"
@@ -375,12 +371,9 @@ eo:
   likes:
     likes:
       people_dislike_this:
-        few: "%{count} malŝatantoj"
-        many: "%{count} malŝatantoj"
         one: "%{count} malŝatanto"
         other: "%{count} malŝatantoj"
-        two: "%{count} malŝatadoj"
-        zero: "neniuj ŝatantoj"
+        zero: "neniuj malŝatantoj"
       people_like_this:
         few: "%{count} ŝatantoj"
         many: "%{count} ŝatantoj"
@@ -391,7 +384,7 @@ eo:
       people_like_this_comment:
         one: "%{count} ŝato"
         other: "%{count} ŝatoj"
-        zero: "neniu ŝato"
+        zero: "neniuj ŝatoj"
   limited: "Limigita"
   more: "Pli"
   next: "sekva"
@@ -470,12 +463,9 @@ eo:
       other: "%{actors} rekonigis vian %{post_link}-n."
       zero: "%{actors} rekonigis vian %{post_link}-n."
     reshared_post_deleted:
-      few: "%{actors} rekonigis vian forviŝitan afiŝon."
-      many: "%{actors} rekonigis vian forviŝitan afiŝon."
-      one: "%{actors} rekonigis vian forviŝitan afiŝon."
-      other: "%{actors} rekonigis vian forviŝitan afiŝon."
-      two: "%{actors} rekonigis vian forviŝitan afiŝon."
-      zero: "%{actors} rekonigis vian forviŝitan afiŝon."
+      one: "%{actors} rekonigis vian forigitan afiŝon."
+      other: "%{actors} rekonigis vian forigitan afiŝon."
+      zero: "%{actors} rekonigis vian forigitan afiŝon."
     started_sharing:
       one: "%{actors} komencis konigi al vi."
       other: "%{actors} komencis konigi al vi."

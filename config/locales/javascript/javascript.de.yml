@@ -1,4 +1,4 @@
-#   Copyright (c) 2010-2012, Diaspora Inc.  This file is
+#   Copyright (c) 2010-2013, Diaspora Inc.  This file is
 #   licensed under the Affero General Public License version 3 or later.  See
 #   the COPYRIGHT file.
 
@@ -6,6 +6,7 @@
 
 de:
   javascripts:
+    and: "und"
     aspect_dropdown:
       add_to_aspect: "Kontakt hinzufügen"
       all_aspects: "Alle Aspekte"
@@ -21,14 +22,19 @@ de:
         two: "In <%= count %> Aspekten"
         zero: "Aspekt auswählen"
     aspect_navigation:
+      add_an_aspect: "+ Aspekt hinzufügen"
       deselect_all: "Auswahl aufheben"
       no_aspects: "Keine Aspekte ausgewählt"
       select_all: "Alle auswählen"
+    comma: ","
     comments:
       hide: "Kommentare verbergen"
       show: "Alle Kommentare zeigen"
     confirm_dialog: "Bist du dir sicher?"
+    conversation:
+      participants: "Teilnehmer"
     delete: "Löschen"
+    edit: "Bearbeiten"
     failed_to_like: "Gefällt mir fehlgeschlagen!"
     failed_to_post_message: "Konnte Beitrag nicht senden!"
     getting_started:
@@ -54,15 +60,22 @@ de:
     ignore_user: "Benutzer ignorieren?"
     infinite_scroll:
       no_more: "Keine weiteren Beiträge."
+      no_more_contacts: "Keine weiteren Kontakte."
     my_activity: "Meine Aktivitäten"
+    my_aspects: "Meine Aspekte"
     my_stream: "Stream"
     people:
       not_found: "und niemand wurde gefunden..."
     photo_uploader:
+      completed: "<%= file %> hochgeladen"
+      empty: "Die Datei {file} ist leer. Bitte treffen sie eine erneute Auswahl ohne diese Datei."
+      invalid_ext: "{file} hat eine ungültige Erweiterung. Nur {extensions} sind erlaubt."
       looking_good: "OMG, du siehst toll aus!"
+      size_error: "{file} ist zu groß. Die maximale Dateigröße beträgt {sizeLimit}."
     publisher:
       at_least_one_aspect: "Du musst zumindest zu einem Aspekt posten"
       limited: "Eingeschränkt - dein Beitrag wird nur Leuten sichtbar sein, mit denen du teilst"
+      near_from: "In der Nähe von <%= location %>"
       public: "Öffentlich - dein Beitrag ist für alle sichtbar und kann von Suchmaschinen gefunden werden"
     reshares:
       duplicate: "Du hast diesen Beitrag bereits weitergesagt!"
@@ -73,6 +86,11 @@ de:
     stream:
       comment: "Kommentar"
       follow: "Folgen"
+      followed_tag:
+        add_a_tag: "Tag hinzufügen"
+        contacts_title: "Leute, die diese Tags mögen"
+        follow: "Folgen"
+        title: "#Tags, denen du folgst"
       hide: "Ausblenden"
       hide_nsfw_posts: "#nsfw-Posts verstecken"
       like: "Gefällt mir"
@@ -100,6 +118,10 @@ de:
         zero: "<%= count %> mal weitergesagt"
       show_nsfw_post: "Beitrag anzeigen"
       show_nsfw_posts: "Alle zeigen"
+      tags:
+        follow: "#<%= tag %> folgen"
+        following: "Du folgst #<%=tag%>"
+        stop_following: "Aufhören #<%= tag %> zu folgen"
       unfollow: "Nicht mehr folgen"
       unlike: "Gefällt mir nicht mehr"
     tags:

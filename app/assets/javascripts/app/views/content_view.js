@@ -7,7 +7,8 @@ app.views.Content = app.views.Base.extend({
     return _.extend(this.defaultPresenter(), {
       text : app.helpers.textFormatter(this.model.get("text"), this.model),
       largePhoto : this.largePhoto(),
-      smallPhotos : this.smallPhotos()
+      smallPhotos : this.smallPhotos(),
+      location: this.location()
     });
   },
 
@@ -34,12 +35,16 @@ app.views.Content = app.views.Base.extend({
     $(evt.currentTarget).hide();
   },
 
+  location: function(){
+    var address = this.model.get('address')? this.model.get('address') : '';
+    return address;
+  },
+
   collapseOversized : function() {
     var collHeight = 200
       , elem = this.$(".collapsible")
       , oembed = elem.find(".oembed")
       , addHeight = 0;
-
     if($.trim(oembed.html()) != "") {
       addHeight = oembed.height();
     }
@@ -82,8 +87,14 @@ app.views.OEmbed = app.views.Base.extend({
   },
 
   presenter:function () {
+    o_embed_cache = this.model.get("o_embed_cache")
+    if(o_embed_cache) {
+      typemodel = { rich: false, photo: false, video: false, link: false }
+      typemodel[o_embed_cache.data.type] = true
+      o_embed_cache.data.types = typemodel
+    }
     return _.extend(this.defaultPresenter(), {
-      o_embed_html : app.helpers.oEmbed.html(this.model.get("o_embed_cache"))
+      o_embed_html : app.helpers.oEmbed.html(o_embed_cache)
     })
   },
 
@@ -94,4 +105,4 @@ app.views.OEmbed = app.views.Base.extend({
     insertHTML.attr("src", insertHTML.attr("src") + paramSeparator + "autoplay=1");
     this.$el.html(insertHTML);
   }
-})
+});

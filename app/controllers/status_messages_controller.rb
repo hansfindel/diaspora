@@ -11,7 +11,7 @@ class StatusMessagesController < ApplicationController
              :mobile,
              :json
 
-  layout :bookmarklet_layout, :only => :bookmarklet
+  layout 'application', only: :bookmarklet
 
   # Called when a user clicks "Mention" on a profile page
   # @param person_id [Integer] The id of the person to be mentioned
@@ -23,6 +23,7 @@ class StatusMessagesController < ApplicationController
       if @contact
         @aspects_with_person = @contact.aspects
         @aspect_ids = @aspects_with_person.map{|x| x.id}
+        gon.aspect_ids = @aspect_ids
         @contacts_of_contact = @contact.contacts
         render :layout => nil
       end
@@ -30,6 +31,7 @@ class StatusMessagesController < ApplicationController
       @aspect = :all
       @aspects = current_user.aspects
       @aspect_ids = @aspects.map{ |a| a.id }
+      gon.aspect_ids = @aspect_ids
     end
   end
 
@@ -44,6 +46,7 @@ class StatusMessagesController < ApplicationController
     services = [*params[:services]].compact
 
     @status_message = current_user.build_post(:status_message, params[:status_message])
+    @status_message.build_location(:address => params[:location_address], :coordinates => params[:location_coords]) if params[:location_address].present?
     @status_message.attach_photos_by_ids(params[:photos])
 
     if @status_message.save
@@ -60,7 +63,7 @@ class StatusMessagesController < ApplicationController
 
       current_user.participate!(@status_message)
 
-      if coming_from_profile_page? # if this is a post coming from a profile page
+      if coming_from_profile_page? && !own_profile_page? # if this is a post coming from a profile page
         flash[:notice] = successful_mention_message
       end
 
@@ -96,6 +99,10 @@ class StatusMessagesController < ApplicationController
     request.env['HTTP_REFERER'].include?("people")
   end
 
+  def own_profile_page?
+    request.env['HTTP_REFERER'].include?("/people/" + params[:status_message][:author][:guid].to_s)
+  end
+
   def normalize_public_flag!
     # mobile || desktop conditions
     sm = params[:status_message]
@@ -107,15 +114,5 @@ class StatusMessagesController < ApplicationController
 
   def remove_getting_started
     current_user.disable_getting_started
-  end
-
-  # Define bookmarklet layout depending on whether
-  # user is in mobile or desktop mode
-  def bookmarklet_layout
-    if request.format == :mobile
-      'application'
-    else
-      'blank'
-    end
   end
 end

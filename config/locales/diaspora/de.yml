@@ -1,4 +1,4 @@
-#   Copyright (c) 2010-2012, Diaspora Inc.  This file is
+#   Copyright (c) 2010-2013, Diaspora Inc.  This file is
 #   licensed under the Affero General Public License version 3 or later.  See
 #   the COPYRIGHT file.
 
@@ -38,14 +38,14 @@ de:
             person:
               invalid: "ist ungültig."
             username:
-              invalid: "ist ungültig. Wir erlauben nur Buchstaben, Zahlen und Unterstriche."
+              invalid: "ist ungültig. Es sind nur Buchstaben, Zahlen und Unterstriche erlaubt."
               taken: "ist schon vergeben."
   admins:
     admin_bar:
       correlations: "Korrelationen"
       pages: "Seiten"
       pod_stats: "Pod Statistik"
-      resque_overview: "Resque Übersicht"
+      sidekiq_monitor: "Sidekiq-Monitor"
       user_search: "Benutzer Suche"
       weekly_user_stats: "Wöchentliche Benutzerstatistik"
     correlations:
@@ -99,7 +99,7 @@ de:
       unknown_person: "Unbekannte Person"
       video_title:
         unknown: "Unbekannter Videotitel"
-  are_you_sure: "Bist du sicher?"
+  are_you_sure: "Bist du dir sicher?"
   are_you_sure_delete_account: "Möchtest du dein Konto wirklich schließen? Dieser Schritt kann nicht rückgängig gemacht werden!"
   aspect_memberships:
     destroy:
@@ -157,6 +157,8 @@ de:
       donate: "Spenden"
       handle_explanation: "Das ist deine Diaspora-ID. Du kannst sie wie eine E-Mail-Adresse weitergeben, damit andere Nutzer mit dir Kontakt aufnehmen können."
       help:
+        any_problem: "Gibt's ein Problem?"
+        contact_podmin: "Kontaktiere den Administrator deines Pods!"
         do_you: "Hast du:"
         email_feedback: "Dein Feedback für Diaspora per %{link}"
         email_link: "Email"
@@ -164,6 +166,7 @@ de:
         find_a_bug: "… ein %{link}?"
         have_a_question: "… eine %{link}?"
         here_to_help: "Die Diaspora-Gemeinschaft ist für dich da!"
+        mail_podmin: "Podmin E-Mail"
         need_help: "Benötigst du Hilfe?"
         tag_bug: "Problem"
         tag_feature: "Verbesserung"
@@ -278,11 +281,15 @@ de:
       people_sharing: "Leute, die mit dir teilen:"
     spotlight:
       community_spotlight: "Gemeinschafts-Schaukasten"
+      suggest_member: "Ein Mitglied vorschlagen"
     two: "%{count} Kontakte"
     zero: "Kontakte"
   conversations:
+    conversation:
+      participants: "Teilnehmer"
     create:
       fail: "Ungültige Nachricht"
+      no_contact: "Hoppla, du musst den Kontakt erst hinzufügen!"
       sent: "Nachricht versendet"
     destroy:
       success: "Konversation erfolgreich entfernt"
@@ -338,10 +345,12 @@ de:
     create:
       already_contacts: "Du bist bereits mit dieser Person verbunden"
       already_sent: "Du hast diese Person bereits eingeladen."
+      empty: "Bitte mindestens eine E-Mail-Adresse eingeben."
       no_more: "Du hast keine Einladungen mehr."
+      note_already_sent: "Es wurde bereits eine Einladung an %{emails} gesendet"
       own_address: "Du kannst keine Einladung an deine eigene Adresse senden."
       rejected: "Mit diesen E-Mail-Adressen gab es Probleme:"
-      sent: "Einladungen wurden verschickt an:"
+      sent: "Einladungen wurden an %{emails} verschickt."
     edit:
       accept_your_invitation: "Deine Einladung akzeptieren"
       your_account_awaits: "Dein Konto wartet!"
@@ -725,6 +734,7 @@ de:
       hey_make: "HEY,<br/>MACHE<br/>ETWAS."
       join_the_movement: "Tritt der Bewegung bei!"
       password: "PASSWORT"
+      password_confirmation: "PASSWORT BESTÄTIGEN"
       sign_up: "REGISTRIEREN"
       sign_up_message: "Soziales Netzwerken mit ♥"
       username: "BENUTZERNAME"
@@ -849,6 +859,7 @@ de:
       all: "alle"
       all_contacts: "Alle Kontakte"
       discard_post: "Beitrag verwerfen"
+      get_location: "Deinen Standort ermitteln"
       make_public: "veröffentlichen"
       new_user_prefill:
         hello: "Hallo zusammen, ich bin #%{new_user_tag}. "
@@ -857,6 +868,7 @@ de:
         newhere: "NeuHier"
       post_a_message_to: "Sende eine Nachricht an %{aspect}"
       posting: "Senden …"
+      preview: "Vorschau"
       publishing_to: "Veröffentlichen an: "
       share: "Teilen"
       share_with: "Teile mit"
@@ -1023,6 +1035,8 @@ de:
     getting_started:
       awesome_take_me_to_diaspora: "Super! Bring mich zu Diaspora*"
       community_welcome: "Diasporas Gemeinschaft ist froh, dich an Bord zu haben!"
+      connect_to_facebook: "Wir können das Ganze etwas beschleunigen, indem du %{link}. So werden dein Name und dein Profilbild hier eingefügt und die Crossposting-Funktion aktiviert."
+      connect_to_facebook_link: "dein Facebook-Konto mit Diaspora verlinkst"
       hashtag_explanation: "Hashtags ermöglichen dir, über deine Interessen zu reden und ihnen zu folgen. Sie sind auch ein guter Weg, neue Leute bei Diaspora zu treffen!"
       hashtag_suggestions: "Probier mal Tags wie #kunst, #musik oder #gif zu folgen."
       saved: "Gespeichert!"

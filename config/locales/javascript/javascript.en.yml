@@ -9,6 +9,9 @@ en:
     delete: "Delete"
     ignore: "Ignore"
     ignore_user: "Ignore this user?"
+    and: "and"
+    comma: ","
+    edit: "Edit"
     timeago:
       prefixAgo: ""
       prefixFromNow: ""
@@ -28,6 +31,7 @@ en:
 
     my_activity: "My Activity"
     my_stream: "Stream"
+    my_aspects: "My Aspects"
 
     videos:
       watch: "Watch this video on <%= provider %>"
@@ -37,8 +41,10 @@ en:
       at_least_one_aspect: "You must publish to at least one aspect"
       limited: "Limited - your post will only be seen by people you are sharing with"
       public: "Public - your post will be visible to everyone and found by search engines"
+      near_from: "Near from: <%= location %>"
     infinite_scroll:
       no_more: "No more posts."
+      no_more_contacts: "No more contacts."
     aspect_dropdown:
       add_to_aspect: "Add contact"
       select_aspects: "Select aspects"
@@ -46,6 +52,7 @@ en:
       stopped_sharing_with: "You have stopped sharing with <%= name %>."
       started_sharing_with: "You have started sharing with <%= name %>!"
       error: "Couldn't start sharing with <%= name %>.  Are you ignoring them?"
+      error_remove: "Couldn't remove <%= name %> from the aspect :("
       toggle:
         zero: "Select aspects"
         one: "In <%= count %> aspect"
@@ -64,6 +71,7 @@ en:
       select_all: "Select all"
       deselect_all: "Deselect all"
       no_aspects: "No aspects selected"
+      add_an_aspect: "+ Add an aspect"
     getting_started:
       hey: "Hey, <%= name %>!"
       no_tags: "Hey, you haven't followed any tags!  Continue anyway?"
@@ -71,10 +79,17 @@ en:
       preparing_your_stream: "Preparing your personalized stream..."
     photo_uploader:
       looking_good: "OMG, you look awesome!"
+      completed: "<%= file %> completed"
+      invalid_ext: "{file} has invalid extension. Only {extensions} are allowed."
+      size_error: "{file} is too large, maximum file size is {sizeLimit}."
+      empty: "{file} is empty, please select files again without it."
     tags:
       wasnt_that_interesting: "OK, I suppose #<%= tagName %> wasn't all that interesting..."
     people:
       not_found: "and no one was found..."
+
+    conversation:
+      participants: "Participants"
 
     stream:
       hide: "Hide"

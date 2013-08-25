@@ -82,16 +82,6 @@ describe Configuration::Methods do
       @settings.version_string.should include @version.number
     end
     
-    context "on a non release" do
-      before do
-        @version.stub(:release?).and_return(false)
-      end
-      
-      it "includes pre" do
-        @settings.version_string.should include "pre"
-      end
-    end
-    
     context "with git available" do
       before do
         @settings.stub(:git_available?).and_return(true)
@@ -105,14 +95,14 @@ describe Configuration::Methods do
     end
   end
   
-  describe "#get_redis_instance" do
+  describe "#get_redis_options" do
     context "with REDISTOGO_URL set" do
       before do
         ENV["REDISTOGO_URL"] = "redis://myserver"
       end
       
       it "uses that" do
-        @settings.get_redis_instance.client.host.should == "myserver"
+        @settings.get_redis_options[:url].should match "myserver"
       end
     end
     
@@ -123,7 +113,7 @@ describe Configuration::Methods do
       end
       
       it "uses that" do
-        @settings.get_redis_instance.client.host.should == "yourserver"
+        @settings.get_redis_options[:url].should match "yourserver"
       end
     end
     
@@ -135,19 +125,7 @@ describe Configuration::Methods do
       end
       
       it "uses that" do
-        @settings.get_redis_instance.client.host.should == "ourserver"
-      end
-    end
-    
-    context "with nothing set" do
-      before do
-        @settings.environment.redis = nil
-        ENV["REDISTOGO_URL"] = nil
-        ENV["REDIS_URL"] = nil
-      end
-      
-      it "uses localhost" do  
-        @settings.get_redis_instance.client.host.should == "127.0.0.1"
+        @settings.get_redis_options[:url].should match "ourserver"
       end
     end
     
@@ -159,7 +137,26 @@ describe Configuration::Methods do
       end
       
       it "uses that" do
-        @settings.get_redis_instance.client.path.should == "/tmp/redis.sock"
+        @settings.get_redis_options[:url].should match "/tmp/redis.sock"
+      end
+    end
+  end
+
+  describe "sidekiq_log" do
+    context "with a relative log set" do
+      it "joins that with Rails.root" do
+        path = "/some/path/"
+        Rails.stub!(:root).and_return(stub(join: path))
+        @settings.environment.sidekiq.log = "relative_path"
+        @settings.sidekiq_log.should match path
+      end
+    end
+
+    context "with a absolute path" do
+      it "just returns that" do
+        path = "/foobar.log"
+        @settings.environment.sidekiq.log = path
+        @settings.sidekiq_log.should == path
       end
     end
   end

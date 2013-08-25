@@ -1,9 +1,7 @@
 {{#if likesCount}}
   <div class="comment">
     <div class="media">
-      <span class="img">
-        <img alt="Heart" src="{{imageUrl "icons/heart.png"}}" />
-      </span>
+      <div alt="Heart" class="icons-heart"></div>
 
       <div class="bd">
         {{#unless likes_fetched}}
@@ -15,7 +13,7 @@
 
           {{#each likes}}
             {{#with author}}
-              <a href="/people/{{guid}}">
+              <a href="/people/{{guid}}" class="{{hovercardable this}}">
                 <img src="{{avatar.small}}" class="avatar micro" title="{{name}}"/>
               </a>
             {{/with}}

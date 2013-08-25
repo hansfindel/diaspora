@@ -2,8 +2,6 @@
 #   licensed under the Affero General Public License version 3 or later.  See
 #   the COPYRIGHT file.
 
-require Rails.root.join("lib", 'stream', "person")
-
 class PeopleController < ApplicationController
   before_filter :authenticate_user!, :except => [:show, :last_post]
   before_filter :redirect_if_tag_search, :only => [:index]
@@ -15,6 +13,13 @@ class PeopleController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound do
     render :file => Rails.root.join('public', '404').to_s,
            :format => :html, :layout => false, :status => 404
+  end
+
+  rescue_from Diaspora::AccountClosed do
+    respond_to do |format|
+      format.any { redirect_to :back, :notice => t("people.show.closed_account") }
+      format.json { render :nothing => true, :status => 410 } # 410 GONE
+    end
   end
 
   helper_method :search_query
@@ -36,7 +41,7 @@ class PeopleController < ApplicationController
         if diaspora_id?(search_query)
           @people =  Person.where(:diaspora_handle => search_query.downcase)
           if @people.empty?
-            Webfinger.in_background(search_query) 
+            Webfinger.in_background(search_query)
             @background_query = search_query.downcase
           end
         end
@@ -66,35 +71,27 @@ class PeopleController < ApplicationController
     respond_with @people
   end
 
+  # renders the persons user profile page
   def show
     @person = Person.find_from_guid_or_username(params)
 
     authenticate_user! if remote_profile_with_no_user_session?
-    return redirect_to :back, :notice => t("people.show.closed_account") if @person.closed_account?
+    raise Diaspora::AccountClosed if @person.closed_account?
 
     @post_type = :all
     @aspect = :profile
-    @share_with = (params[:share_with] == 'true')
-
     @stream = Stream::Person.new(current_user, @person, :max_time => max_time)
-
     @profile = @person.profile
 
     unless params[:format] == "json" # hovercard
       if current_user
         @block = current_user.blocks.where(:person_id => @person.id).first
         @contact = current_user.contact_for(@person)
-        @aspects_with_person = []
         if @contact && !params[:only_posts]
-          @aspects_with_person = @contact.aspects
-          @aspect_ids = @aspects_with_person.map(&:id)
           @contacts_of_contact_count = @contact.contacts.count
           @contacts_of_contact = @contact.contacts.limit(8)
-
         else
           @contact ||= Contact.new
-          @contacts_of_contact_count = 0
-          @contacts_of_contact = []
         end
       end
     end
@@ -105,6 +102,23 @@ class PeopleController < ApplicationController
       end
 
       format.json { render :json => @stream.stream_posts.map { |p| LastThreeCommentsDecorator.new(PostPresenter.new(p, current_user)) }}
+    end
+  end
+
+  # hovercards fetch some the persons public profile data via json and display
+  # it next to the avatar image in a nice box
+  def hovercard
+    @person = Person.find_from_guid_or_username({:id => params[:person_id]})
+    raise Diaspora::AccountClosed if @person.closed_account?
+
+    respond_to do |format|
+      format.all do
+        redirect_to :action => "show", :id => params[:person_id]
+      end
+
+      format.json do
+        render :json => HovercardPresenter.new(@person)
+      end
     end
   end
 
@@ -130,25 +144,23 @@ class PeopleController < ApplicationController
       @aspect = :profile
       @contacts_of_contact = @contact.contacts.paginate(:page => params[:page], :per_page => (params[:limit] || 15))
       @hashes = hashes_for_people @contacts_of_contact, @aspects
-      @aspects_with_person = @contact.aspects
-      @aspect_ids = @aspects_with_person.map(&:id)
     else
       flash[:error] = I18n.t 'people.show.does_not_exist'
       redirect_to people_path
     end
   end
 
+  # shows the dropdown list of aspects the current user has set for the given person.
+  # renders "thats you" in case the current user views himself
   def aspect_membership_dropdown
     @person = Person.find_by_guid(params[:person_id])
-    if @person == current_user.person
-      render :text => I18n.t('people.person.thats_you')
-    else
-      @contact = current_user.contact_for(@person) || Contact.new
-      render :partial => 'aspect_membership_dropdown', :locals => {:contact => @contact, :person => @person, :hang => 'left'}
-    end
-  end
 
-  private
+    # you are not a contact of yourself...
+    return render :text => I18n.t('people.person.thats_you') if @person == current_user.person
+
+    @contact = current_user.contact_for(@person) || Contact.new
+    render :partial => 'aspect_membership_dropdown', :locals => {:contact => @contact, :person => @person, :hang => 'left'}
+  end
 
   def redirect_if_tag_search
     if search_query.starts_with?('#')
@@ -161,6 +173,8 @@ class PeopleController < ApplicationController
       end
     end
   end
+
+  private
 
   def hashes_for_people(people, aspects)
     ids = people.map{|p| p.id}

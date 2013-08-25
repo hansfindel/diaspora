@@ -1,4 +1,4 @@
-#   Copyright (c) 2010-2012, Diaspora Inc.  This file is
+#   Copyright (c) 2010-2013, Diaspora Inc.  This file is
 #   licensed under the Affero General Public License version 3 or later.  See
 #   the COPYRIGHT file.
 
@@ -6,10 +6,12 @@
 
 es-MX:
   javascripts:
+    and: "y"
     aspect_dropdown:
       add_to_aspect: "Añadir contacto"
       all_aspects: "Todos los aspectos"
       error: "No se pudo empezar a compartir con <%= name %>. ¿Le estás ignorando?"
+      error_remove: "No se pudo eliminar a <%= name %> del aspecto."
       select_aspects: "Seleccionar aspectos"
       started_sharing_with: "¡Has comenzado a compartir con <%= name %>!"
       stopped_sharing_with: "Has dejado de compartir con <%= name %>."
@@ -18,14 +20,17 @@ es-MX:
         other: "En <%= count %> aspectos"
         zero: "Elige los aspectos"
     aspect_navigation:
+      add_an_aspect: "+ Añadir un aspecto"
       deselect_all: "Desmarcar todos"
       no_aspects: "No hay aspectos seleccionados"
       select_all: "Marcar todos"
+    comma: ","
     comments:
       hide: "ocultar comentarios"
       show: "mostrar todos los comentarios"
     confirm_dialog: "¿Estás seguro?"
     delete: "Borrar"
+    edit: "Editar"
     failed_to_like: "¡No se pudo marcar como «Me gusta»!"
     failed_to_post_message: "¡No se pudo publicar el mensaje!"
     getting_started:
@@ -51,12 +56,18 @@ es-MX:
     ignore_user: "¿Ignorar a este usuario?"
     infinite_scroll:
       no_more: "No hay más publicaciones."
+      no_more_contacts: "No hay más contactos."
     my_activity: "Mi actividad"
+    my_aspects: "Mis aspectos"
     my_stream: "Entrada"
     people:
       not_found: "y nadie fue encontrado…"
     photo_uploader:
+      completed: "<%= file %> completado"
+      empty: "El archivo {file} está vacío, por favor selecciona los archivos nuevamente sin incluir este."
+      invalid_ext: "El archivo {file} tiene una extensión inválida. Solo las extensiones {extensions} son permitidas."
       looking_good: "¡Ah, te ves increíble!"
+      size_error: "El archivo {file} es demasiado grande, el tamaño máximo permitido es {sizeLimit}."
     publisher:
       at_least_one_aspect: "Debes publicar al menos en un aspecto"
       limited: "Limitado – tu publicación solo será vista por ia gente con quien compartes"
@@ -70,6 +81,11 @@ es-MX:
     stream:
       comment: "Comentar"
       follow: "Seguir"
+      followed_tag:
+        add_a_tag: "Añadir una etiqueta"
+        contacts_title: "Personas siguiendo estas etiquetas"
+        follow: "Seguir"
+        title: "#Etiquetas seguidas"
       hide: "Ocultar"
       hide_nsfw_posts: "Ocultar publicaciones no aptas para todo público"
       like: "Me gusta"
@@ -91,6 +107,10 @@ es-MX:
         zero: "Compartido <%= count %> veces"
       show_nsfw_post: "Mostrar publicación"
       show_nsfw_posts: "Mostrar todo"
+      tags:
+        follow: "Seguir #<%= tag %>"
+        following: "Siguiendo #<%= tag %>"
+        stop_following: "Dejar de seguir #<%= tag %>"
       unfollow: "Dejar de seguir"
       unlike: "No me gusta"
     tags:

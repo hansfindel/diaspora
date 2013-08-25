@@ -1,4 +1,4 @@
-#   Copyright (c) 2010-2012, Diaspora Inc.  This file is
+#   Copyright (c) 2010-2013, Diaspora Inc.  This file is
 #   licensed under the Affero General Public License version 3 or later.  See
 #   the COPYRIGHT file.
 
@@ -6,10 +6,12 @@
 
 es:
   javascripts:
+    and: "y"
     aspect_dropdown:
       add_to_aspect: "Añadir contacto"
       all_aspects: "Todos los aspectos"
       error: "No podrás compartir con <%= name %>. ¿Estás ignorándole?"
+      error_remove: "No se pudo eliminar a <%= name %> del aspecto :("
       select_aspects: "Elige los aspectos"
       started_sharing_with: "¡Has empezado a compartir con <%= name %>!"
       stopped_sharing_with: "Ya no compartes más con <%= name %>."
@@ -18,14 +20,17 @@ es:
         other: "En <%= count %> aspectos"
         zero: "Elige los aspectos"
     aspect_navigation:
+      add_an_aspect: "+ Añadir un aspecto"
       deselect_all: "Desmarcar todos"
       no_aspects: "No hay aspectos seleccionados"
       select_all: "Marcar todos"
+    comma: ","
     comments:
       hide: "ocultar comentarios"
       show: "mostrar todos los comentarios"
     confirm_dialog: "¿Estás seguro?"
     delete: "Eliminar"
+    edit: "Editar"
     failed_to_like: "\"Me gusta\" no ha funcionado."
     failed_to_post_message: "¡Error al publicar el mensaje!"
     getting_started:
@@ -51,18 +56,24 @@ es:
     ignore_user: "¿Ignorar a este usuario?"
     infinite_scroll:
       no_more: "No hay más publicaciones."
+      no_more_contacts: "No hay más contactos."
     my_activity: "Mi Actividad"
+    my_aspects: "Mis aspectos"
     my_stream: "Entrada"
     people:
       not_found: "...y no se encontró a nadie."
     photo_uploader:
+      completed: "<%= file %> completado"
+      empty: "{file} está vacío, por favor selecciona otros archivos."
+      invalid_ext: "{file} tiene una extensión inválida. Solo se permiten {extensions}."
       looking_good: "¡Guau, estás increíble!"
+      size_error: "{file} es demasiado grande, el tamaño máximo de un archivo es de {sizeLimit}."
     publisher:
       at_least_one_aspect: "Debes publicarlo al menos en un aspecto"
       limited: "Limitado - tu publicación solo es visible para gente con quien compartes"
       public: "Público - tu publicación es visible para todos, incluyendo buscadores"
     reshares:
-      duplicate: "Que bien, ¿eh? ¡Has compartido esa publicación!"
+      duplicate: "¿Verdad que te ha gustado? Pero ya has esa publicación."
       post: "¿Compartir la publicación de <%= name %>?"
       successful: "¡Publicación compartida con éxito!"
     search_for: "Buscar a <%= name %>"
@@ -70,6 +81,11 @@ es:
     stream:
       comment: "Comentar"
       follow: "Seguir"
+      followed_tag:
+        add_a_tag: "Añadir una etiqueta"
+        contacts_title: "Personas que buscaron esas etiquetas"
+        follow: "Seguir"
+        title: "#Etiquetas seguidas"
       hide: "Ocultar publicación"
       hide_nsfw_posts: "Ocultar publicaciones no aptas para todos los públicos"
       like: "Me gusta"
@@ -91,6 +107,10 @@ es:
         zero: "Compartido <%= count %> veces"
       show_nsfw_post: "Mostrar publicación"
       show_nsfw_posts: "Mostrar todas las publicaciones"
+      tags:
+        follow: "Seguir #<%= tag %>"
+        following: "Siguiendo #<%= tag %>"
+        stop_following: "Dejar de seguir #<%= tag %>"
       unfollow: "Dejar de seguir"
       unlike: "No me gusta"
     tags:
@@ -107,7 +127,7 @@ es:
       prefixAgo: "Hace"
       prefixFromNow: "dentro de"
       seconds: "menos de 1 minuto"
-      suffixAgo: "hace"
+      suffixAgo: ""
       suffixFromNow: ""
       year: "un año aproximadamente"
       years: "%d años"

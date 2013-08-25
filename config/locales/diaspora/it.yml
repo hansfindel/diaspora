@@ -1,4 +1,4 @@
-#   Copyright (c) 2010-2012, Diaspora Inc.  This file is
+#   Copyright (c) 2010-2013, Diaspora Inc.  This file is
 #   licensed under the Affero General Public License version 3 or later.  See
 #   the COPYRIGHT file.
 
@@ -45,7 +45,7 @@ it:
       correlations: "Correlazioni"
       pages: "Pagine"
       pod_stats: "Statistiche pod"
-      resque_overview: "Supervisione Resque"
+      sidekiq_monitor: "Monitor Sidekiq"
       user_search: "Cerca utente"
       weekly_user_stats: "Statistiche settimanali utenti"
     correlations:
@@ -79,7 +79,7 @@ it:
       week: "1 settimana"
     user_search:
       add_invites: "aggiungi inviti"
-      email_to: "Email da invitare"
+      email_to: "Email a cui mandare l'invito"
       users:
         one: "trovato %{count} utente"
         other: "trovati %{count} utenti"
@@ -157,6 +157,8 @@ it:
       donate: "Fai una donazione"
       handle_explanation: "Questo è il tuo ID su Diaspora. Lo puoi dare alle persone per farti trovare, come un indirizzo email."
       help:
+        any_problem: "Qualche problema?"
+        contact_podmin: "Contatta l'amministratore del tuo pod!"
         do_you: "Vuoi..."
         email_feedback: "Se preferisci, manda un feedback a %{link}"
         email_link: "Email"
@@ -164,6 +166,7 @@ it:
         find_a_bug: "...segnalare un %{link}?"
         have_a_question: "...fare una %{link}?"
         here_to_help: "La comunità di Diaspora è qui!"
+        mail_podmin: "Email amministratore del pod"
         need_help: "Hai bisogno di aiuto?"
         tag_bug: "problema"
         tag_feature: "idea"
@@ -278,11 +281,15 @@ it:
       people_sharing: "Persone che condividono con te:"
     spotlight:
       community_spotlight: "In evidenza nella comunità"
+      suggest_member: "Suggerisci un utente"
     two: "%{count} contatti"
     zero: "contatti"
   conversations:
+    conversation:
+      participants: "Partecipanti"
     create:
       fail: "Messaggio non valido"
+      no_contact: "Hey, devi prima aggiungere un contatto!"
       sent: "Messaggio inviato"
     destroy:
       success: "Conversazione rimossa con successo"
@@ -335,7 +342,9 @@ it:
     create:
       already_contacts: "Questa persona è già tra i tuoi contatti"
       already_sent: "Hai già invitato questa persona."
+      empty: "Perfavore inserire almeno un indirizzo email."
       no_more: "Non hai più inviti a disposizione"
+      note_already_sent: "Gli inviti sono stati già inviati a: %{emails}"
       own_address: "Non puoi inviare un invito al tuo indirizzo."
       rejected: "Questi indirizzi email hanno dei problemi:"
       sent: "Gli inviti sono stati inviati a: "
@@ -365,6 +374,7 @@ it:
       back_to_top: "Torna all'inizio"
       powered_by: "POWERED BY DIASPORA*"
       public_feed: "Feed pubblici Diaspora di %{name}"
+      source_package: ""
       toggle: "attiva/disattiva versione mobile"
       whats_new: "novità"
       your_aspects: "i tuoi aspetti"
@@ -446,11 +456,8 @@ it:
       two: "A %{actors} piace il tuo %{post_link}."
       zero: "A %{actors} piace il tuo %{post_link}."
     liked_post_deleted:
-      few: "A %{actors} piaceva il post che hai eliminato."
-      many: "A %{actors} piaceva il post che hai eliminato."
       one: "A %{actors} piaceva il post che hai eliminato."
       other: "A %{actors} piaceva il post che hai eliminato."
-      two: "A %{actors} piaceva il post che hai eliminato."
       zero: "A %{actors} piaceva il post che hai eliminato."
     mentioned:
       few: "%{actors} ti hanno menzionato in un %{post_link}."
@@ -460,11 +467,8 @@ it:
       two: "%{actors} ti hanno menzionato in un %{post_link}."
       zero: "%{actors} ti hanno menzionato in un %{post_link}."
     mentioned_deleted:
-      few: "%{actors} ti hanno menzionato in un post che è stato eliminato."
-      many: "%{actors} ti hanno menzionato in un post che è stato eliminato."
       one: "%{actors} ti ha menzionato in un post che è stato eliminato."
-      other: "%{actors} ti ha menzionato in un post che è stato eliminato."
-      two: "%{actors} ti hanno menzionato in un post che è stato eliminato."
+      other: "%{actors} ti hanno menzionato in un post che è stato eliminato."
       zero: "%{actors} ti ha menzionato in un post che è stato eliminato."
     post: "post"
     private_message:
@@ -708,6 +712,7 @@ it:
       hey_make: "HEY,<br/>CREA<br/>QUALCOSA."
       join_the_movement: "Partecipa al movimento!"
       password: "PASSWORD"
+      password_confirmation: "CONFERMA PASSWORD"
       sign_up: "ISCRIVITI"
       sign_up_message: "Il Social Network con un ♥ così"
       username: "NOME UTENTE"
@@ -769,6 +774,7 @@ it:
       logged_in_as: "accesso effettuato come"
       no_services: "Ancora non hai collegato alcun servizio."
       really_disconnect: "disconnettere %{service}?"
+      services_explanation: "Il collegamento ad altri servizi ti dà la possibilità di pubblicare i post che invii su Diaspora"
     inviter:
       click_link_to_accept_invitation: "Vai a questo indirizzo per accettare l'invito"
       join_me_on_diaspora: "Vieni con me su DIASPORA*"
@@ -829,6 +835,7 @@ it:
       all: "tutti"
       all_contacts: "tutti i contatti"
       discard_post: "Elimina il post"
+      get_location: "Ottieni la tua posizione"
       make_public: "rendi pubblico"
       new_user_prefill:
         hello: "Ciao a tutti, sono un #%{new_user_tag}."
@@ -837,6 +844,7 @@ it:
         newhere: "NuovoUtente"
       post_a_message_to: "Invia un messaggio a %{aspect}"
       posting: "Invio in corso..."
+      preview: "Anteprima"
       publishing_to: "stai condividendo con: "
       share: "Condividi"
       share_with: "condividi con"
@@ -869,17 +877,14 @@ it:
     new:
       mentioning: "Stai menzionando: %{person}"
     too_long:
-      one: "per favore scrivi i tuoi messaggi di stato con meno di %{count} carattere"
-      other: "per favore scrivi i tuoi messaggi di stato con meno di %{count} caratteri"
-      zero: "per favore scrivi i tuoi messaggi di stato con meno di %{count} caratteri"
+      one: "per favore scrivi i tuoi stati con meno di %{count} carattere"
+      other: "per favore scrivi i tuoi stati con meno di %{count} caratteri"
+      zero: "per favore scrivi i tuoi stati con meno di %{count} caratteri"
   stream_helper:
     hide_comments: "Nascondi i commenti"
     show_comments:
-      few: "Mostra gli altri %{count} commenti"
-      many: "Mostra gli altri %{count} commenti"
-      one: "Mostra 1 altro commento"
+      one: "Mostra un altro commento"
       other: "Mostra gli altri %{count} commenti"
-      two: "Mostra gli altri 2 commenti"
       zero: "Nessun altro commento"
   streams:
     activity:
@@ -1000,6 +1005,8 @@ it:
     getting_started:
       awesome_take_me_to_diaspora: "Fantastico! Fammi entrare in Diaspora*"
       community_welcome: "La comunità di Diaspora ti dà il benvenuto a bordo!"
+      connect_to_facebook: "Possiamo rendere le cose veloci %{link} a Diaspora. Così caricherai il nome e la tua foto, oltre che abilitare la condivisione dei post."
+      connect_to_facebook_link: "collegando il tuo account Facebook"
       hashtag_explanation: "I tag ti permettono di parlare dei tuoi interessi e di seguirli. Sono anche un ottimo sistema per trovare nuove persone su Diaspora."
       hashtag_suggestions: "Prova a seguire tag tipo #art, #movies, #gif, ecc."
       saved: "Salvato!"

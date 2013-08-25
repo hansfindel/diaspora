@@ -3,14 +3,18 @@
 -#   the COPYRIGHT file.
 
 .conversation_participants
-  .right
-    = link_to(image_tag('deletelabel.png'), conversation_visibility_path(conversation), :method => 'delete', :data => { :confirm => "#{t('.delete')}?" }, :title => t('.delete'))
+  = link_to(content_tag(:div, nil, :class => 'icons-deletelabel'),
+            conversation_visibility_path(conversation),
+            :method => 'delete',
+            :data => { :confirm => "#{t('.delete')}?" },
+            :title => t('.delete'),
+            :class => 'close_conversation')
 
   %h3{ :class => direction_for(conversation.subject) }
     = conversation.subject
 
   - for participant in conversation.participants
-    = person_image_link(participant)
+    = person_image_link(participant, :size => :thumb_small)
 
 .span-15.last
   .stream

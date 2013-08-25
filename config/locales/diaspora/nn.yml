@@ -1,4 +1,4 @@
-#   Copyright (c) 2010-2012, Diaspora Inc.  This file is
+#   Copyright (c) 2010-2013, Diaspora Inc.  This file is
 #   licensed under the Affero General Public License version 3 or later.  See
 #   the COPYRIGHT file.
 
@@ -45,7 +45,6 @@ nn:
       correlations: "Korrelasjonar"
       pages: "Sidar"
       pod_stats: "Pod-statistikk"
-      resque_overview: "Resque-overblikk"
       user_search: "Brukarsøk"
       weekly_user_stats: "Brukarstatistikk per veke"
     correlations:
@@ -157,6 +156,8 @@ nn:
       donate: "Doner"
       handle_explanation: "Dette er Diaspora-ID-en din. Nett som ei e-postadresse kan du gje han til folk slik at dei kan nå deg."
       help:
+        any_problem: "Har du eit problem?"
+        contact_podmin: "Ta kontakt med administratoren (podminen) på poden din."
         do_you: "Har du:"
         email_feedback: "%{link} attendemeldingane dine, om du vil"
         email_link: "E-post"
@@ -164,6 +165,7 @@ nn:
         find_a_bug: "funne ein %{link}?"
         have_a_question: "eit %{link}?"
         here_to_help: "Diaspora-fellesskapen er her for deg!"
+        mail_podmin: "Podmin e-post"
         need_help: "Treng du hjelp?"
         tag_bug: "bug"
         tag_feature: "feature"
@@ -278,11 +280,13 @@ nn:
       people_sharing: "Personar som deler med deg:"
     spotlight:
       community_spotlight: "Kreative medlemer"
+      suggest_member: "Foreslå eit medlem"
     two: "%{count} kontaktar"
     zero: "kontaktar"
   conversations:
     create:
       fail: "Ugyldig melding"
+      no_contact: "Hei, du må leggje til kontakten først!"
       sent: "Meldinga er sendt"
     destroy:
       success: "Samtalen blei fjerna"
@@ -338,7 +342,9 @@ nn:
     create:
       already_contacts: "Du er allereie knytt til denne personen"
       already_sent: "Du har allereie invitert denne personen."
+      empty: "Skriv inn minst ei e-post-adresse."
       no_more: "Du har ingen fleire invitasjonar."
+      note_already_sent: "Invitasjonar er allereie sende til: %{emails}"
       own_address: "Du kan ikkje senda invitasjon til di eiga adresse."
       rejected: "Det oppstod problem med desse e-postadressene:"
       sent: "Invitasjonar er sende til:"
@@ -990,6 +996,8 @@ nn:
     getting_started:
       awesome_take_me_to_diaspora: "Kult! Ta meg med til Diaspora*"
       community_welcome: "Diaspora* sin fellesskap er glade for å ha deg ombord!"
+      connect_to_facebook: "Me kan få fart på sakane ved å %{link} til Diaspora. Dette vil hente namnet og profilbilete ditt derfrå og sette i gong kryss-posting."
+      connect_to_facebook_link: "kopla til Facebook-kontoen din"
       hashtag_explanation: "Grindmerke (#) gjer at du kan tala om og følgja interessene dine. Dei er òg ein fin måte å finna nye Diaspora-brukarar på."
       hashtag_suggestions: "Prøv å følgje tags som #kunst, #film, #åtgaum, #katt, etc."
       saved: "Lagra!"

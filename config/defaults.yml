@@ -4,8 +4,7 @@
 
 defaults:
   version:
-    number: "0.0.3.0"
-    release: false # Do not touch unless in a merge conflict on doing a release, master should have a commit setting this to true which is not backported to the develop branch.
+    number: "0.1.1.0" # Do not touch unless doing a release, do not backport the version number that's in master but keep develp to always say "head"
   heroku: false
   environment:
     url: "http://localhost:3000/"
@@ -13,12 +12,19 @@ defaults:
     redis:
     require_ssl: true
     single_process_mode: false
+    sidekiq:
+      namespace:
+      concurrency: 5
+      retry: 10
+      backtrace: 15
+      log: 'log/sidekiq.log'
     s3:
       enable: false
       key:
       secret:
       bucket:
       region:
+      cache: true
     image_redirect_url:
     assets:
       serve: false
@@ -28,10 +34,12 @@ defaults:
   server:
     port: 3000
     rails_environment: 'development'
+    stderr_log:
+    stdout_log:
     database: 'mysql'
     unicorn_worker: 2
-    embed_resque_worker: false
-    resque_workers: 1
+    embed_sidekiq_worker: false
+    sidekiq_workers: 1
   privacy:
     jquery_cdn: true
     google_analytics_key:
@@ -42,7 +50,7 @@ defaults:
     mixpanel_uid:
     chartbeat_uid:
   settings:
-    pod_name: "Diaspora*"
+    pod_name: 'Diaspora*'
     enable_registrations: true
     follow_diasporahq: true
     invitations:
@@ -53,6 +61,22 @@ defaults:
       enable: false
       suggest_email:
     typhoeus_verbose: false
+    typhoeus_concurrency: 20
+    username_blacklist:
+      - 'admin'
+      - 'administrator'
+      - 'hostmaster'
+      - 'info'
+      - 'postmaster'
+      - 'root'
+      - 'ssladmin'
+      - 'ssladministrator'
+      - 'sslwebmaster'
+      - 'sysadmin'
+      - 'webmaster'
+      - 'support'
+      - 'contact'
+      - 'example_user1dsioaioedfhgoiesajdigtoearogjaidofgjo'
   services:
     facebook:
       enable: false
@@ -86,7 +110,6 @@ defaults:
   admins:
     account:
     podmin_email:
-    inline_resque_web: true
 
 development:
   environment:
@@ -94,13 +117,15 @@ development:
       serve: true
     single_process_mode: true
     require_ssl: false
+  server:
+    unicorn_worker: 1
   settings:
     follow_diasporahq: false
 production:
   i_am_a_dummy: # Remove if you add an actual override
 test:
   environment:
-    url: "http://localhost:9887/"
+    url: 'http://localhost:9887/'
     single_process_mode: true
     require_ssl: false
     assets:
@@ -118,13 +143,15 @@ test:
     enable: true
 integration1:
   environment:
-    url: "http://localhost:45789/"
+    url: 'http://localhost:45789/'
+    single_process_mode: true
     assets:
       serve: true
     require_ssl: false
 integration2:
   environment:
-    url: "http://localhost:34658/"
+    url: 'http://localhost:34658/'
+    single_process_mode: true
     assets:
       serve: true
     require_ssl: false

@@ -201,11 +201,10 @@ describe PeopleController do
     it 'does not allow xss attacks' do
       user2 = bob
       profile = user2.profile
-      profile.first_name = "<script> alert('xss attack');</script>"
-      profile.save
+      profile.update_attribute(:first_name, "</script><script> alert('xss attack');</script>")
       get :show, :id => user2.person.to_param
       response.should be_success
-      response.body.match(profile.first_name).should be_false
+      response.body.should_not include(profile.first_name)
     end
 
 
@@ -367,7 +366,23 @@ describe PeopleController do
     end
   end
 
+  describe '#hovercard' do
+    before do
+      @hover_test = FactoryGirl.create(:person)
+      @hover_test.profile.tag_string = '#test #tags'
+      @hover_test.profile.save!
+    end
 
+    it 'redirects html requests' do
+      get :hovercard, :person_id => @hover_test.guid
+      response.should redirect_to person_path(:id => @hover_test.guid)
+    end
+
+    it 'returns json with profile stuff' do
+      get :hovercard, :person_id => @hover_test.guid, :format => 'json'
+      JSON.parse( response.body )['handle'].should == @hover_test.diaspora_handle
+    end
+  end
 
   describe '#refresh_search ' do
     before(:each)do

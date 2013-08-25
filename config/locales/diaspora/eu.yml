@@ -1,4 +1,4 @@
-#   Copyright (c) 2010-2012, Diaspora Inc.  This file is
+#   Copyright (c) 2010-2013, Diaspora Inc.  This file is
 #   licensed under the Affero General Public License version 3 or later.  See
 #   the COPYRIGHT file.
 
@@ -45,7 +45,6 @@ eu:
       correlations: "Korrelazioak"
       pages: "Orrialdeak"
       pod_stats: "Hornitzailearen Estatistikak"
-      resque_overview: "Resqueren Aurrebista"
       user_search: "Erabiltzaile Bilaketa"
       weekly_user_stats: "Asteko Erabiltzaile Estatistikak"
     correlations:

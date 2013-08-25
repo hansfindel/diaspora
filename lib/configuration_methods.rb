@@ -42,7 +42,6 @@ module Configuration
     def version_string
       return @version_string unless @version_string.nil?
       @version_string = version.number.to_s
-      @version_string << "pre" unless version.release?
       @version_string << "-p#{git_revision[0..7]}" if git_available?
       @version_string
     end
@@ -54,6 +53,7 @@ module Configuration
         @git_available = false
       else
         `which git`
+        `git status 2> /dev/null` if $?.success?
         @git_available = $?.success?
       end
     end
@@ -74,7 +74,7 @@ module Configuration
       (git_revision || version)[0..8]
     end
     
-    def get_redis_instance
+    def get_redis_options
       if redistogo_url.present?
         $stderr.puts "WARNING: using the REDISTOGO_URL environment variable is deprecated, please use REDIS_URL now."
         ENV['REDIS_URL'] = redistogo_url
@@ -85,24 +85,37 @@ module Configuration
       redis_url = ENV['REDIS_URL'] || environment.redis.get
       
       if ENV['RAILS_ENV']== 'integration2'
-        redis_options = { :host => 'localhost', :port => 6380 }
+        redis_options[:url] = "redis://localhost:6380"
       elsif redis_url.present?
         unless redis_url.start_with?("redis://") || redis_url.start_with?("unix:///")
           $stderr.puts "WARNING: Your redis url (#{redis_url}) doesn't start with redis:// or unix:///"
         end
-        redis_options = { :url => redis_url }
+        redis_options[:url] = redis_url
       end
       
-      Redis.new(redis_options.merge(:thread_safe => true))
+      redis_options[:namespace] = AppConfig.environment.sidekiq.namespace.get
+      
+      redis_options
     end
     
+    def sidekiq_log
+      path = Pathname.new environment.sidekiq.log.get
+      path = Rails.root.join(path) unless pathname.absolute?
+      path.to_s
+    end
+
+    def postgres?
+      defined?(ActiveRecord::ConnectionAdapters::PostgreSQLAdapter) &&
+      ActiveRecord::Base.connection.is_a?(ActiveRecord::ConnectionAdapters::PostgreSQLAdapter)
+    end
+
     private
 
     def get_git_info
       return if git_info_present? || !git_available?
       
       git_cmd = `git log -1 --pretty="format:%H %ci"`
-      if git_cmd =~ /^([\d\w]+?)\s(.+)$/
+      if git_cmd =~ /^(\w+?)\s(.+)$/
         @git_revision = $1
         @git_update = $2.strip
       end

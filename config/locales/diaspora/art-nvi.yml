@@ -1,4 +1,4 @@
-#   Copyright (c) 2010-2012, Diaspora Inc.  This file is
+#   Copyright (c) 2010-2013, Diaspora Inc.  This file is
 #   licensed under the Affero General Public License version 3 or later.  See
 #   the COPYRIGHT file.
 
@@ -92,9 +92,6 @@ art-nvi:
       sent: "'Upxare fpìme'"
     helper:
       new_messages:
-        human: ""
-        po: "'upxare amip"
-        yml: "%{count}a upxare amip"
         zero: "kea 'upxare amip"
     index:
       inbox: "'Upxare tsenge"

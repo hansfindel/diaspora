@@ -1,4 +1,4 @@
-#   Copyright (c) 2010-2012, Diaspora Inc.  This file is
+#   Copyright (c) 2010-2013, Diaspora Inc.  This file is
 #   licensed under the Affero General Public License version 3 or later.  See
 #   the COPYRIGHT file.
 
@@ -14,7 +14,7 @@ hu:
     failure:
       inactive: "A fiókod nem aktiváltad még."
       invalid: "Érvénytelen felhasználónév vagy jelszó."
-      invalid_token: "Érvénytelen hitelesítési jel."
+      invalid_token: "Érvénytelen hitelesítési azonosító."
       locked: "A fiókod zárolva van."
       timeout: "A munkamenet lejárt, kérjük jelentkezz be újra."
       unauthenticated: "A továbblépéshez jelentkezz be vagy iratkozz fel."
